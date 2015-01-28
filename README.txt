@@ -1,6 +1,6 @@
 === Min Max Quantities For WooCommerce ===
 Contributors: johnny-manziel
-Tags: product tabs, woocommerce, Custom tab, Product tab, Woocommerce product tabs
+Tags:  admin, checkout, e-commerce, limits, maximum, price, pricing, purchase, shop, store, wp e-commerce, incremental product quantities, max, min, product maximum values, product minimum values, product quantities, product step values, woocommerce
 Requires at least: 3.0.1
 Tested up to: 4.1
 Stable tag: trunk
