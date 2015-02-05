@@ -66,6 +66,11 @@ Easy steps to install the plugin:
 *   If you go to Products > Categories and edit a category, you`ll be able to set the "group of" option:
 *   This lets you setup rules such as “Customers must buy products in X category in groups of X only”.
 
+== Screenshots ==
+
+1. Setting up plugin Order-level Rules settings.
+2. Setting up plugin Product settings.
+
 
 == Changelog ==
 
