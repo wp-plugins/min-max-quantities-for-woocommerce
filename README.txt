@@ -73,6 +73,8 @@ Easy steps to install the plugin:
 
 
 == Changelog ==
+= 1.0.1
+* 	Add new language file
 
 = 1.0.0 =
 *	Release Date - 28 Jan, 1015

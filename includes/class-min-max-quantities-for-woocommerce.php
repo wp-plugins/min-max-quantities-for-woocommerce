@@ -55,7 +55,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
     public function __construct() {
 
         $this->plugin_name = 'Min Max Quantities For WooCommerce';
-        $this->version = '1.0.0';
+        $this->version = '1.0.1';
 
         $this->minimum_order_quantity = get_option('min_max_quantities_for_woocommerce_minimum_order_quantity');
         $this->maximum_order_quantity = get_option('min_max_quantities_for_woocommerce_maximum_order_quantity');
