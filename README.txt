@@ -75,7 +75,7 @@ Easy steps to install the plugin:
 == Changelog ==
 = 1.0.2 =
 * recognize po/mo files
-= 1.0.1
+= 1.0.1 =
 * 	Add new language file
 
 = 1.0.0 =
