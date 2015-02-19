@@ -73,6 +73,8 @@ Easy steps to install the plugin:
 
 
 == Changelog ==
+= 1.0.3 =
+*   Add support and review link
 = 1.0.2 =
 * recognize po/mo files
 = 1.0.1 =

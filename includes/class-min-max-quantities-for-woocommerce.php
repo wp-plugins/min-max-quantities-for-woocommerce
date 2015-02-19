@@ -55,7 +55,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
     public function __construct() {
 
         $this->plugin_name = 'min-max-quantities-for-woocommerce';
-        $this->version = '1.0.1';
+        $this->version = '1.0.3';
 
         $this->minimum_order_quantity = get_option('min_max_quantities_for_woocommerce_minimum_order_quantity');
         $this->maximum_order_quantity = get_option('min_max_quantities_for_woocommerce_maximum_order_quantity');
@@ -83,6 +83,18 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
         $this->load_dependencies();
         $this->set_locale();
         $this->define_admin_hooks();
+
+        $prefix = is_network_admin() ? 'network_admin_' : '';
+        add_filter("{$prefix}plugin_action_links_" . MMQW_PLUGIN_BASENAME, array($this, 'plugin_action_links'), 10, 4);
+    }
+    
+     public function plugin_action_links($actions, $plugin_file, $plugin_data, $context) {
+        $custom_actions = array(
+            'support' => sprintf('<a href="%s" target="_blank">%s</a>', 'http://wordpress.org/support/plugin/min-max-quantities-for-woocommerce/', __('Support', 'min-max-quantities-for-woocommerce')),
+            'review' => sprintf('<a href="%s" target="_blank">%s</a>', 'http://wordpress.org/support/view/plugin-reviews/min-max-quantities-for-woocommerce/', __('Write a Review', 'min-max-quantities-for-woocommerce')),
+        );
+
+        return array_merge($custom_actions, $actions);
     }
 
     /**

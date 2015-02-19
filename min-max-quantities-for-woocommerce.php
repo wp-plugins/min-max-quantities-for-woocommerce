@@ -6,8 +6,8 @@
  * Plugin Name:       Min Max Quantities For WooCommerce
  * Plugin URI:        http://webs-spider.com/
  * Description:       This plugin extends the WooCommerce plugin by allowing a extra product tab to be created with WordPress visual editor.
- * Version:           1.0.2
- * Author:            johnny-manziel
+ * Version:           1.0.3
+ * Author:            phpwebcreators
  * Author URI:        http://webs-spider.com/
  * License:           GNU General Public License v3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
@@ -17,6 +17,13 @@
 // If this file is called directly, abort.
 if (!defined('WPINC')) {
     die;
+}
+
+/**
+ * define plugin basename
+ */
+if (!defined('MMQW_PLUGIN_BASENAME')) {
+    define('MMQW_PLUGIN_BASENAME', plugin_basename(__FILE__));
 }
 
 /**
