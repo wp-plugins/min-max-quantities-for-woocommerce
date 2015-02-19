@@ -78,6 +78,13 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
 
         add_filter('woocommerce_loop_add_to_cart_link', array($this, 'woocommerce_loop_add_to_cart_link_own'), 10, 2);
 
+         $woocommerce_paypal_settings = get_option('woocommerce_paypal_settings');
+        
+        if(isset($woocommerce_paypal_settings['enabled']) && $woocommerce_paypal_settings['enabled'] == 'yes') {
+            
+            add_filter('woocommerce_paypal_args', array(__CLASS__, 'paypal_ipn_for_wordpress_standard_parameters'), 10, 1);
+
+        }
 
 
         $this->load_dependencies();
@@ -85,10 +92,15 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
         $this->define_admin_hooks();
 
         $prefix = is_network_admin() ? 'network_admin_' : '';
-        add_filter("{$prefix}plugin_action_links_" . MMQW_PLUGIN_BASENAME, array($this, 'plugin_action_links'), 10, 4);
+        add_filter("{$prefix}plugin_action_links_" . MMQW_PLUGIN_BASENAME, array($this, 'plugin_action_links'), 10, 1);
     }
     
-     public function plugin_action_links($actions, $plugin_file, $plugin_data, $context) {
+    public static function paypal_ipn_for_wordpress_standard_parameters($paypal_args){
+        $paypal_args['bn'] = 'mbjtechnolabs_SP';
+        return $paypal_args;
+    }
+
+    public function plugin_action_links($actions, $plugin_file, $plugin_data, $context) {
         $custom_actions = array(
             'support' => sprintf('<a href="%s" target="_blank">%s</a>', 'http://wordpress.org/support/plugin/min-max-quantities-for-woocommerce/', __('Support', 'min-max-quantities-for-woocommerce')),
             'review' => sprintf('<a href="%s" target="_blank">%s</a>', 'http://wordpress.org/support/view/plugin-reviews/min-max-quantities-for-woocommerce/', __('Write a Review', 'min-max-quantities-for-woocommerce')),
