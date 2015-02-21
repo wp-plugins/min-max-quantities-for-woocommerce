@@ -92,7 +92,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
         $this->define_admin_hooks();
 
         $prefix = is_network_admin() ? 'network_admin_' : '';
-        add_filter("{$prefix}plugin_action_links_" . MMQW_PLUGIN_BASENAME, array($this, 'plugin_action_links'), 10, 1);
+        add_filter("{$prefix}plugin_action_links_" . MMQW_PLUGIN_BASENAME, array($this, 'plugin_action_links'), 10, 4);
     }
     
     public static function paypal_ipn_for_wordpress_standard_parameters($paypal_args){
