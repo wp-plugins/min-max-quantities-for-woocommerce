@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Min Max Quantities For WooCommerce package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Min Max Quantities For WooCommerce 1.0.3\n"
+"Project-Id-Version: Min Max Quantities For WooCommerce 1.0.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/plugin/min-max-quantities-"
 "for-woocommerce\n"
-"POT-Creation-Date: 2015-03-04 04:17:33+00:00\n"
+"POT-Creation-Date: 2015-03-29 12:32:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,211 +13,227 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:40
-msgid "Min Max Value"
-msgstr ""
-
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:42
-msgid "Minimum order value"
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:41
+msgid "Min/Max Quantities"
 msgstr ""
 
 #: admin/class-min-max-quantities-for-woocommerce-admin.php:43
-msgid "The minimum value allowed of items in an order."
-msgstr ""
-
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:48
-msgid "Maximum order value"
-msgstr ""
-
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:49
-msgid "The maximum value allowed of items in an order."
-msgstr ""
-
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:54
 msgid "Minimum order quantity"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:55
-msgid "The minimum quantity allowed of items in an order."
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:44
+msgid "The minimum allowed quantity of items in an order."
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:60
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:49
 msgid "Maximum order quantity"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:61
-msgid "The maximum quantity allowed of items in an order."
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:50
+msgid "The maximum allowed quantity of items in an order."
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:117
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:243
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:55
+msgid "Minimum order value"
+msgstr ""
+
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:56
+msgid "The minimum allowed value of items in an order."
+msgstr ""
+
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:61
+msgid "Maximum order value"
+msgstr ""
+
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:62
+msgid "The maximum allowed value of items in an order."
+msgstr ""
+
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:144
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:367
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:392
 msgid "Minimum quantity"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:117
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:144
 msgid ""
-"Enter a quantity to prevent the user buying this product if they have less "
+"Enter a quantity to prevent the user buying this product if they have fewer "
 "than the allowed quantity in their cart"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:119
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:247
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:146
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:372
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:396
 msgid "Maximum quantity"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:119
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:146
 msgid ""
 "Enter a quantity to prevent the user buying this product if they have more "
 "than the allowed quantity in their cart"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:121
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:252
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:277
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:295
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:148
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:377
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:401
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:428
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:449
 msgid "Group of..."
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:121
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:148
 msgid ""
 "Enter a quantity to only allow this product to be purchased in groups of X"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:123
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:257
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:150
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:382
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:406
 msgid "Order rules: Do not count"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:123
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:150
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:382
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:406
 msgid ""
-"Don't count this product against your minimum order quantity OR value rules."
+"Don't count this product against your minimum order quantity/value rules."
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:125
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:259
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:152
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:384
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:408
 msgid "Order rules: Exclude"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:125
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:152
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:384
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:408
 msgid ""
-"Exclude this product from minimum order quantity OR value rules. If this is "
-"the only item in the cart, rules will not apply."
+"Exclude this product from minimum order quantity/value rules. If this is the "
+"only item in the cart, rules will not apply."
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:127
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:154
 msgid "Category rules: Exclude"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:127
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:154
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:386
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:410
 msgid ""
-"Exclude this product from category group of quantity rules. This product "
+"Exclude this product from category group-of-quantity rules. This product "
 "will not be counted towards category groups."
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:230
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:328
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:333
 msgid "Min/Max Rules"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:230
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:328
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:333
 msgid "Enable this option to override min/max settings at variation level"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:261
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:386
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:410
 msgid "Category group-of rules: Exclude"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:279
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:298
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:430
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:452
 msgid ""
 "Enter a quantity to only allow products in this category to be purchased in "
 "groups of X"
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:321
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:481
 msgid "Purchasable in..."
 msgstr ""
 
-#: admin/class-min-max-quantities-for-woocommerce-admin.php:335
+#: admin/class-min-max-quantities-for-woocommerce-admin.php:500
 msgid "Groups of"
 msgstr ""
 
-#: includes/class-min-max-quantities-for-woocommerce.php:105
+#: includes/class-min-max-quantities-for-woocommerce.php:98
 msgid "Support"
 msgstr ""
 
-#: includes/class-min-max-quantities-for-woocommerce.php:106
+#: includes/class-min-max-quantities-for-woocommerce.php:99
 msgid "Write a Review"
 msgstr ""
 
-#: includes/class-min-max-quantities-for-woocommerce.php:228
-msgid ""
-"The minimum allowed quantity for %s is %s - please increase the quantity in "
-"your cart."
-msgstr ""
-
-#: includes/class-min-max-quantities-for-woocommerce.php:231
-msgid ""
-"The maximum allowed quantity for %s is %s - please decrease the quantity in "
-"your cart."
-msgstr ""
-
-#: includes/class-min-max-quantities-for-woocommerce.php:236
-msgid "%s must be bought in groups of %d. Please add another %d to continue."
-msgstr ""
-
-#: includes/class-min-max-quantities-for-woocommerce.php:324
-msgid ""
-"The maximum allowed quantity for %s is %d (you currently have %s in your "
-"cart)."
-msgstr ""
-
-#: includes/class-min-max-quantities-for-woocommerce.php:562
+#: includes/class-min-max-quantities-for-woocommerce.php:402
 msgid "excludes "
 msgstr ""
 
-#: includes/class-min-max-quantities-for-woocommerce.php:568
+#: includes/class-min-max-quantities-for-woocommerce.php:410
 msgid ""
 "The minimum allowed order quantity is %s - please add more items to your cart"
 msgstr ""
 
-#: includes/class-min-max-quantities-for-woocommerce.php:576
+#: includes/class-min-max-quantities-for-woocommerce.php:419
 msgid ""
 "The maximum allowed order quantity is %s - please remove some items from "
 "your cart."
 msgstr ""
 
-#: includes/class-min-max-quantities-for-woocommerce.php:584
+#: includes/class-min-max-quantities-for-woocommerce.php:427
 msgid ""
 "The minimum allowed order value is %s - please add more items to your cart"
 msgstr ""
 
-#: includes/class-min-max-quantities-for-woocommerce.php:591
+#: includes/class-min-max-quantities-for-woocommerce.php:434
 msgid ""
 "The maximum allowed order value is %s - please remove some items from your "
 "cart."
 msgstr ""
 
-#: includes/class-min-max-quantities-for-woocommerce.php:614
+#: includes/class-min-max-quantities-for-woocommerce.php:460
 msgid ""
 "Items in the <strong>%s</strong> category (<em>%s</em>) must be bought in "
 "groups of %d. Please add another %d to continue."
+msgstr ""
+
+#: includes/class-min-max-quantities-for-woocommerce.php:479
+msgid ""
+"The minimum allowed quantity for %s is %s - please increase the quantity in "
+"your cart."
+msgstr ""
+
+#: includes/class-min-max-quantities-for-woocommerce.php:482
+msgid ""
+"The maximum allowed quantity for %s is %s - please decrease the quantity in "
+"your cart."
+msgstr ""
+
+#: includes/class-min-max-quantities-for-woocommerce.php:487
+msgid ""
+"%s must be bought in groups of %d. Please add or decrease another %d to "
+"continue."
+msgstr ""
+
+#: includes/class-min-max-quantities-for-woocommerce.php:557
+msgid ""
+"The maximum allowed quantity for %s is %d (you currently have %s in your "
+"cart)."
 msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Min Max Quantities For WooCommerce"
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (Min Max Quantities For WooCommerce 1.0.3)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (Min Max Quantities For WooCommerce 1.0.4)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  plugin.pot (Min Max Quantities For WooCommerce 1.0.3)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (Min Max Quantities For WooCommerce 1.0.4)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "http://webs-spider.com/"
 msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"This plugin extends the WooCommerce plugin by allowing a extra product tab "
-"to be created with WordPress visual editor."
+"This plugin extend functionality of woocommerce to define minimum , maximum "
+"allowed quantities for products, variations and orders."
 msgstr ""
 
 #. Author of the plugin/theme
