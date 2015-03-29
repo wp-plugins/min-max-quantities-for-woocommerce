@@ -73,6 +73,8 @@ Easy steps to install the plugin:
 
 
 == Changelog ==
+= 1.0.4 =
+*   compatible with woocommerce 2.3.7 
 = 1.0.3 =
 *   Add support and review link
 = 1.0.2 =
@@ -86,4 +88,4 @@ Easy steps to install the plugin:
 
 
 == Upgrade Notice ==
-This plugin extend functionality of woocommerce to define minimum , maximum allowed quantities for products, variations and orders.
+major changes user need to setting everything before used latest plugin
