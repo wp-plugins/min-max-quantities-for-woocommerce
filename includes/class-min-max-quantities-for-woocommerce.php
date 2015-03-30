@@ -55,7 +55,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
     public function __construct() {
 
         $this->plugin_name = 'min-max-quantities-for-woocommerce';
-        $this->version = '1.0.4';
+        $this->version = '1.0.5';
 
         $this->minimum_order_quantity = absint(get_option('woocommerce_minimum_order_quantity'));
         $this->maximum_order_quantity = absint(get_option('woocommerce_maximum_order_quantity'));
@@ -78,12 +78,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
 
         add_action('wp_enqueue_scripts', array($this, 'load_scripts'));
 
-      
-            
-            add_filter('woocommerce_paypal_args', array(__CLASS__, 'paypal_ipn_for_wordpress_standard_parameters'), 10, 1);
-
-        
-
+        add_filter('woocommerce_paypal_args', array(__CLASS__, 'min_max_quantities_for_woocommerce_standard_parameters'), 10, 1);
 
         $this->load_dependencies();
         $this->set_locale();
@@ -93,7 +88,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
         add_filter("{$prefix}plugin_action_links_" . MMQW_PLUGIN_BASENAME, array($this, 'plugin_action_links'), 10, 4);
     }
 
-    public static function paypal_ipn_for_wordpress_standard_parameters($paypal_args) {
+    public static function min_max_quantities_for_woocommerce_standard_parameters($paypal_args) {
         $paypal_args['bn'] = 'mbjtechnolabs_SP';
         return $paypal_args;
     }
@@ -215,7 +210,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
     public function get_version() {
         return $this->version;
     }
-    
+
     /**
      * Add an error
      * @todo remove deprecated add error in future wc versions
