@@ -73,6 +73,8 @@ Easy steps to install the plugin:
 
 
 == Changelog ==
+= 1.0.6 = 
+*   group product issue and compatible with woocommerce 2.3.7
 = 1.0.5 =
 *   add button source
 = 1.0.4 =

@@ -55,7 +55,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
     public function __construct() {
 
         $this->plugin_name = 'min-max-quantities-for-woocommerce';
-        $this->version = '1.0.5';
+        $this->version = '1.0.6';
 
         $this->minimum_order_quantity = absint(get_option('woocommerce_minimum_order_quantity'));
         $this->maximum_order_quantity = absint(get_option('woocommerce_maximum_order_quantity'));
@@ -202,16 +202,6 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
     }
 
     /**
-     * Retrieve the version number of the plugin.
-     *
-     * @since     1.0.0
-     * @return    string    The version number of the plugin.
-     */
-    public function get_version() {
-        return $this->version;
-    }
-
-    /**
      * Add an error
      * @todo remove deprecated add error in future wc versions
      */
@@ -352,12 +342,20 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
             if (in_array($checking_id, $checked_ids))
                 continue;
 
+            // parent product level
+            $do_not_count = get_post_meta($values['product_id'], 'minmax_do_not_count', true);
+            $cart_exclude = get_post_meta($values['product_id'], 'minmax_cart_exclude', true);
+
+            // variation level override
+            $do_not_count = 'yes' === get_post_meta($checking_id, 'variation_minmax_do_not_count', true) ? 'yes' : $do_not_count;
+            $cart_exclude = 'yes' === get_post_meta($checking_id, 'variation_minmax_cart_exclude', true) ? 'yes' : $cart_exclude;
+
             $product = $values['data'];
 
             // Cart rules
-            $minmax_do_not_count = apply_filters('wc_min_max_quantity_minmax_do_not_count', get_post_meta($checking_id, 'minmax_do_not_count', true), $checking_id, $cart_item_key, $values);
+            $minmax_do_not_count = apply_filters('wc_min_max_quantity_minmax_do_not_count', $do_not_count, $checking_id, $cart_item_key, $values);
 
-            $minmax_cart_exclude = apply_filters('wc_min_max_quantity_minmax_cart_exclude', get_post_meta($checking_id, 'minmax_cart_exclude', true), $checking_id, $cart_item_key, $values);
+            $minmax_cart_exclude = apply_filters('wc_min_max_quantity_minmax_cart_exclude', $cart_exclude, $checking_id, $cart_item_key, $values);
 
             if ('yes' === $minmax_do_not_count || 'yes' === $minmax_cart_exclude) {
                 // Do not count
@@ -399,7 +397,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
             $excludes = '';
 
             if (sizeof($this->excludes) > 0) {
-                $excludes = ' (' . __('excludes ', 'woocommerce-min-max-quantities') . implode(', ', $this->excludes) . ')';
+                $excludes = ' (' . __('excludes ', 'min-max-quantities-for-woocommerce') . implode(', ', $this->excludes) . ')';
             }
 
             // Check cart quantity
@@ -407,7 +405,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
 
             if ($quantity > 0 && $total_quantity < $quantity) {
 
-                $this->add_error(sprintf(__('The minimum allowed order quantity is %s - please add more items to your cart', 'woocommerce-min-max-quantities'), $quantity) . $excludes);
+                $this->add_error(sprintf(__('The minimum allowed order quantity is %s - please add more items to your cart', 'min-max-quantities-for-woocommerce'), $quantity) . $excludes);
 
                 return;
             }
@@ -416,7 +414,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
 
             if ($quantity > 0 && $total_quantity > $quantity) {
 
-                $this->add_error(sprintf(__('The maximum allowed order quantity is %s - please remove some items from your cart.', 'woocommerce-min-max-quantities'), $quantity));
+                $this->add_error(sprintf(__('The maximum allowed order quantity is %s - please remove some items from your cart.', 'min-max-quantities-for-woocommerce'), $quantity));
 
                 return;
             }
@@ -424,14 +422,14 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
             // Check cart value
             if ($this->minimum_order_value && $total_cost && $total_cost < $this->minimum_order_value) {
 
-                $this->add_error(sprintf(__('The minimum allowed order value is %s - please add more items to your cart', 'woocommerce-min-max-quantities'), woocommerce_price($this->minimum_order_value)) . $excludes);
+                $this->add_error(sprintf(__('The minimum allowed order value is %s - please add more items to your cart', 'min-max-quantities-for-woocommerce'), woocommerce_price($this->minimum_order_value)) . $excludes);
 
                 return;
             }
 
             if ($this->maximum_order_value && $total_cost && $total_cost > $this->maximum_order_value) {
 
-                $this->add_error(sprintf(__('The maximum allowed order value is %s - please remove some items from your cart.', 'woocommerce-min-max-quantities'), woocommerce_price($this->maximum_order_value)));
+                $this->add_error(sprintf(__('The maximum allowed order value is %s - please remove some items from your cart.', 'min-max-quantities-for-woocommerce'), woocommerce_price($this->maximum_order_value)));
 
                 return;
             }
@@ -457,7 +455,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
                     }
                 }
 
-                $this->add_error(sprintf(__('Items in the <strong>%s</strong> category (<em>%s</em>) must be bought in groups of %d. Please add another %d to continue.', 'woocommerce-min-max-quantities'), $term->name, implode(', ', $product_names), $group_of_quantity, $group_of_quantity - ( $quantity % $group_of_quantity )));
+                $this->add_error(sprintf(__('Items in the <strong>%s</strong> category (<em>%s</em>) must be bought in groups of %d. Please add another %d to continue.', 'min-max-quantities-for-woocommerce'), $term->name, implode(', ', $product_names), $group_of_quantity, $group_of_quantity - ( $quantity % $group_of_quantity )));
 
                 return;
             }
@@ -476,15 +474,15 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
 
         if ($minimum_quantity > 0 && $quantity < $minimum_quantity) {
 
-            $this->add_error(sprintf(__('The minimum allowed quantity for %s is %s - please increase the quantity in your cart.', 'woocommerce-min-max-quantities'), $product->get_title(), $minimum_quantity));
+            $this->add_error(sprintf(__('The minimum allowed quantity for %s is %s - please increase the quantity in your cart.', 'min-max-quantities-for-woocommerce'), $product->get_title(), $minimum_quantity));
         } elseif ($maximum_quantity > 0 && $quantity > $maximum_quantity) {
 
-            $this->add_error(sprintf(__('The maximum allowed quantity for %s is %s - please decrease the quantity in your cart.', 'woocommerce-min-max-quantities'), $product->get_title(), $maximum_quantity));
+            $this->add_error(sprintf(__('The maximum allowed quantity for %s is %s - please decrease the quantity in your cart.', 'min-max-quantities-for-woocommerce'), $product->get_title(), $maximum_quantity));
         }
 
         if ($group_of_quantity > 0 && ( $quantity % $group_of_quantity )) {
 
-            $this->add_error(sprintf(__('%s must be bought in groups of %d. Please add or decrease another %d to continue.', 'woocommerce-min-max-quantities'), $product->get_title(), $group_of_quantity, $group_of_quantity - ( $quantity % $group_of_quantity )));
+            $this->add_error(sprintf(__('%s must be bought in groups of %d. Please add or decrease another %d to continue.', 'min-max-quantities-for-woocommerce'), $product->get_title(), $group_of_quantity, $group_of_quantity - ( $quantity % $group_of_quantity )));
         }
     }
 
@@ -554,7 +552,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
                 $_product = new WC_Product($product_id);
             }
 
-            $this->add_error(sprintf(__('The maximum allowed quantity for %s is %d (you currently have %s in your cart).', 'woocommerce-min-max-quantities'), $_product->get_title(), $maximum_quantity, $total_quantity - $quantity));
+            $this->add_error(sprintf(__('The maximum allowed quantity for %s is %d (you currently have %s in your cart).', 'min-max-quantities-for-woocommerce'), $_product->get_title(), $maximum_quantity, $total_quantity - $quantity));
 
             $pass = false;
         }
@@ -637,6 +635,11 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
             } elseif (!$maximum_quantity || absint($maximum_quantity) % absint($group_of_quantity) === 0) {
 
                 $data['step'] = $group_of_quantity;
+            }
+
+            // set a new minimum if group of is set but not minimum
+            if (!$minimum_quantity) {
+                $data['min_value'] = $group_of_quantity;
             }
         }
 
