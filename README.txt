@@ -1,8 +1,8 @@
 === Min Max Quantities For WooCommerce ===
-Contributors: mbjtechnolabs
+Contributors: johnwickjigo
 Tags:  admin, checkout, e-commerce, limits, maximum, price, pricing, purchase, shop, store, wp e-commerce, incremental product quantities, max, min, product maximum values, product minimum values, product quantities, product step values, woocommerce
 Requires at least: 3.0.1
-Tested up to: 4.1
+Tested up to: 4.1.1
 Stable tag: trunk
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html

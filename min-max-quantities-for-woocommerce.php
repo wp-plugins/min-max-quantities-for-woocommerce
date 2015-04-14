@@ -4,10 +4,10 @@
  *
  * @wordpress-plugin
  * Plugin Name:       Min Max Quantities For WooCommerce
- * Plugin URI:        http://www.mbjtechnolabs.com
+ * Plugin URI:        http://webs-spider.com/
  * Description:       This plugin extend functionality of woocommerce to define minimum , maximum allowed quantities for products, variations and orders.
- * Version:           1.0.7
- * Author:            mbjtechnolabs
+ * Version:           1.0.8
+ * Author:            johnwickjigo
  * Author URI:        http://www.mbjtechnolabs.com
  * License:           GNU General Public License v3.0
  * License URI:       http://www.gnu.org/licenses/gpl-3.0.html
