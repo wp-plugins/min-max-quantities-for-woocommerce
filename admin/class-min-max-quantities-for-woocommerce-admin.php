@@ -68,6 +68,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
 
         if (defined('WC_VERSION') && version_compare(WC_VERSION, '2.3.0', '>=')) {
             add_filter('woocommerce_products_general_settings', array($this, 'add_settings'), 60);
+
         } else {
             // Admin
             add_action('woocommerce_settings_general_options_after', array(&$this, 'admin_settings'));
@@ -141,17 +142,17 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
 
         echo '<div class="options_group">';
 
-        woocommerce_wp_text_input(array('id' => 'minimum_allowed_quantity', 'label' => __('Minimum quantity', 'min-max-quantities-for-woocommerce'), 'description' => __('Enter a quantity to prevent the user buying this product if they have fewer than the allowed quantity in their cart', 'min-max-quantities-for-woocommerce'), 'desc_tip' => true));
+    	woocommerce_wp_text_input( array( 'id' => 'minimum_allowed_quantity', 'label' => __( 'Minimum quantity', 'min-max-quantities-for-woocommerce' ), 'description' => __( 'Enter a quantity to prevent the user buying this product if they have fewer than the allowed quantity in their cart', 'min-max-quantities-for-woocommerce' ), 'desc_tip' => true ) );
 
-        woocommerce_wp_text_input(array('id' => 'maximum_allowed_quantity', 'label' => __('Maximum quantity', 'min-max-quantities-for-woocommerce'), 'description' => __('Enter a quantity to prevent the user buying this product if they have more than the allowed quantity in their cart', 'min-max-quantities-for-woocommerce'), 'desc_tip' => true));
+    	woocommerce_wp_text_input( array( 'id' => 'maximum_allowed_quantity', 'label' => __( 'Maximum quantity', 'min-max-quantities-for-woocommerce' ), 'description' => __( 'Enter a quantity to prevent the user buying this product if they have more than the allowed quantity in their cart', 'min-max-quantities-for-woocommerce' ), 'desc_tip' => true ) );
 
-        woocommerce_wp_text_input(array('id' => 'group_of_quantity', 'label' => __('Group of...', 'min-max-quantities-for-woocommerce'), 'description' => __('Enter a quantity to only allow this product to be purchased in groups of X', 'min-max-quantities-for-woocommerce'), 'desc_tip' => true));
+    	woocommerce_wp_text_input( array( 'id' => 'group_of_quantity', 'label' => __( 'Group of...', 'min-max-quantities-for-woocommerce' ), 'description' => __( 'Enter a quantity to only allow this product to be purchased in groups of X', 'min-max-quantities-for-woocommerce' ), 'desc_tip' => true ) );
 
-        woocommerce_wp_checkbox(array('id' => 'minmax_do_not_count', 'label' => __('Order rules: Do not count', 'min-max-quantities-for-woocommerce'), 'description' => __('Don\'t count this product against your minimum order quantity/value rules.', 'min-max-quantities-for-woocommerce')));
+    	woocommerce_wp_checkbox( array( 'id' => 'minmax_do_not_count', 'label' => __( 'Order rules: Do not count', 'min-max-quantities-for-woocommerce' ), 'description' => __( 'Don\'t count this product against your minimum order quantity/value rules.', 'min-max-quantities-for-woocommerce' ) ) );
 
-        woocommerce_wp_checkbox(array('id' => 'minmax_cart_exclude', 'label' => __('Order rules: Exclude', 'min-max-quantities-for-woocommerce'), 'description' => __('Exclude this product from minimum order quantity/value rules. If this is the only item in the cart, rules will not apply.', 'min-max-quantities-for-woocommerce')));
+    	woocommerce_wp_checkbox( array( 'id' => 'minmax_cart_exclude', 'label' => __( 'Order rules: Exclude', 'min-max-quantities-for-woocommerce' ), 'description' => __( 'Exclude this product from minimum order quantity/value rules. If this is the only item in the cart, rules will not apply.', 'min-max-quantities-for-woocommerce' ) ) );
 
-        woocommerce_wp_checkbox(array('id' => 'minmax_category_group_of_exclude', 'label' => __('Category rules: Exclude', 'min-max-quantities-for-woocommerce'), 'description' => __('Exclude this product from category group-of-quantity rules. This product will not be counted towards category groups.', 'min-max-quantities-for-woocommerce')));
+    	woocommerce_wp_checkbox( array( 'id' => 'minmax_category_group_of_exclude', 'label' => __( 'Category rules: Exclude', 'min-max-quantities-for-woocommerce' ), 'description' => __( 'Exclude this product from category group-of-quantity rules. This product will not be counted towards category groups.', 'min-max-quantities-for-woocommerce' ) ) );
 
         echo '</div>';
 
@@ -202,8 +203,10 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
 
         if (isset($min_max_rules[$i])) {
             update_post_meta($variation_id, 'min_max_rules', 'yes');
+
         } else {
             update_post_meta($variation_id, 'min_max_rules', 'no');
+
         }
 
         update_post_meta($variation_id, 'variation_minimum_allowed_quantity', $minimum_allowed_quantity[$i]);
@@ -212,20 +215,26 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
 
         if (isset($minmax_do_not_count[$i])) {
             update_post_meta($variation_id, 'variation_minmax_do_not_count', 'yes');
+
         } else {
             update_post_meta($variation_id, 'variation_minmax_do_not_count', 'no');
+
         }
 
         if (isset($minmax_cart_exclude[$i])) {
             update_post_meta($variation_id, 'variation_minmax_cart_exclude', 'yes');
+
         } else {
             update_post_meta($variation_id, 'variation_minmax_cart_exclude', 'no');
+
         }
 
         if (isset($minmax_category_group_of_exclude[$i])) {
             update_post_meta($variation_id, 'variation_minmax_category_group_of_exclude', 'yes');
+
         } else {
             update_post_meta($variation_id, 'variation_minmax_category_group_of_exclude', 'no');
+
         }
     }
 
@@ -293,23 +302,31 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
 
                     if (isset($minmax_do_not_count[$i])) {
                         update_post_meta($variation_id, 'minmax_do_not_count', 'yes');
+
                     } else {
                         update_post_meta($variation_id, 'minmax_do_not_count', 'no');
+
                     }
 
                     if (isset($minmax_cart_exclude[$i])) {
                         update_post_meta($variation_id, 'minmax_cart_exclude', 'yes');
+
                     } else {
                         update_post_meta($variation_id, 'minmax_cart_exclude', 'no');
+
                     }
 
                     if (isset($minmax_category_group_of_exclude[$i])) {
                         update_post_meta($variation_id, 'minmax_category_group_of_exclude', 'yes');
+
                     } else {
                         update_post_meta($variation_id, 'minmax_category_group_of_exclude', 'no');
+
                     }
+
                 } else {
                     update_post_meta($variation_id, 'min_max_rules', 'no');
+
                 }
             }
         }
@@ -325,12 +342,12 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
         if (defined('WC_VERSION') && version_compare(WC_VERSION, '2.3.0', '>=')) {
             $min_max_rules = get_post_meta($variation->ID, 'min_max_rules', true);
             ?>
-            <label><input type="checkbox" class="checkbox min_max_rules" name="min_max_rules[<?php echo $loop; ?>]" <?php if ($min_max_rules) checked($min_max_rules, 'yes'); ?> /> <?php _e('Min/Max Rules', 'min-max-quantities-for-woocommerce'); ?> <a class="tips" data-tip="<?php _e('Enable this option to override min/max settings at variation level', 'min-max-quantities-for-woocommerce'); ?>" href="#">[?]</a></label>
+	    	<label><input type="checkbox" class="checkbox min_max_rules" name="min_max_rules[<?php echo $loop; ?>]" <?php if ( $min_max_rules ) checked( $min_max_rules, 'yes' ); ?> /> <?php _e( 'Min/Max Rules', 'min-max-quantities-for-woocommerce' ); ?> <a class="tips" data-tip="<?php _e( 'Enable this option to override min/max settings at variation level', 'min-max-quantities-for-woocommerce' ); ?>" href="#">[?]</a></label>
             <?php
         } else {
             ?>
 
-            <label><input type="checkbox" class="checkbox min_max_rules" name="min_max_rules[<?php echo $loop; ?>]" <?php if (isset($variation_data['min_max_rules'][0])) checked($variation_data['min_max_rules'][0], 'yes'); ?> /> <?php _e('Min/Max Rules', 'min-max-quantities-for-woocommerce'); ?> <a class="tips" data-tip="<?php _e('Enable this option to override min/max settings at variation level', 'min-max-quantities-for-woocommerce'); ?>" href="#">[?]</a></label>
+	    	<label><input type="checkbox" class="checkbox min_max_rules" name="min_max_rules[<?php echo $loop; ?>]" <?php if ( isset( $variation_data['min_max_rules'][0] ) ) checked( $variation_data['min_max_rules'][0], 'yes' ); ?> /> <?php _e( 'Min/Max Rules', 'min-max-quantities-for-woocommerce' ); ?> <a class="tips" data-tip="<?php _e( 'Enable this option to override min/max settings at variation level', 'min-max-quantities-for-woocommerce' ); ?>" href="#">[?]</a></label>
 
             <?php
         }
@@ -349,8 +366,10 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
 
         if (isset($min_max_rules) && 'no' === $min_max_rules) {
             $visible = 'style="display:none"';
+
         } else {
             $visible = '';
+
         }
 
         if (defined('WC_VERSION') && version_compare(WC_VERSION, '2.3.0', '>=')) {
@@ -364,50 +383,50 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
 
             <div class="min_max_rules_options" <?php echo $visible; ?>>
                 <p class="form-row form-row-first">
-                    <label><?php _e('Minimum quantity', 'min-max-quantities-for-woocommerce'); ?>
+					<label><?php _e( 'Minimum quantity', 'min-max-quantities-for-woocommerce' ); ?>
                         <input type="number" size="5" name="variation_minimum_allowed_quantity[<?php echo $loop; ?>]" value="<?php if ($min_qty) echo esc_attr($min_qty); ?>" /></label>
                 </p>
 
                 <p class="form-row form-row-last">
-                    <label><?php _e('Maximum quantity', 'min-max-quantities-for-woocommerce'); ?>
+					<label><?php _e( 'Maximum quantity', 'min-max-quantities-for-woocommerce' ); ?>
                         <input type="number" size="5" name="variation_maximum_allowed_quantity[<?php echo $loop; ?>]" value="<?php if ($max_qty) echo esc_attr($max_qty); ?>" /></label>
                 </p>
 
                 <p class="form-row form-row-first">
-                    <label><?php _e('Group of...', 'min-max-quantities-for-woocommerce'); ?>
+					<label><?php _e( 'Group of...', 'min-max-quantities-for-woocommerce' ); ?>
                         <input type="number" size="5" name="variation_group_of_quantity[<?php echo $loop; ?>]" value="<?php if ($group_of) echo esc_attr($group_of); ?>" /></label>
                 </p>
 
                 <p class="form-row form-row-last">
-                    <label><input type="checkbox" class="checkbox" name="variation_minmax_do_not_count[<?php echo $loop; ?>]" <?php if ($do_not_count) checked($do_not_count, 'yes') ?> /> <?php _e('Order rules: Do not count', 'min-max-quantities-for-woocommerce'); ?> <a class="tips" data-tip="<?php _e('Don\'t count this product against your minimum order quantity/value rules.', 'min-max-quantities-for-woocommerce'); ?>" href="#">[?]</a></label>
+					<label><input type="checkbox" class="checkbox" name="variation_minmax_do_not_count[<?php echo $loop; ?>]" <?php if ( $do_not_count ) checked( $do_not_count, 'yes' ) ?> /> <?php _e( 'Order rules: Do not count', 'min-max-quantities-for-woocommerce' ); ?> <a class="tips" data-tip="<?php _e( 'Don\'t count this product against your minimum order quantity/value rules.', 'min-max-quantities-for-woocommerce' ); ?>" href="#">[?]</a></label>
 
-                    <label><input type="checkbox" class="checkbox" name="variation_minmax_cart_exclude[<?php echo $loop; ?>]" <?php if ($cart_exclude) checked($cart_exclude, 'yes') ?> /> <?php _e('Order rules: Exclude', 'min-max-quantities-for-woocommerce'); ?> <a class="tips" data-tip="<?php _e('Exclude this product from minimum order quantity/value rules. If this is the only item in the cart, rules will not apply.', 'min-max-quantities-for-woocommerce'); ?>" href="#">[?]</a></label>
+					<label><input type="checkbox" class="checkbox" name="variation_minmax_cart_exclude[<?php echo $loop; ?>]" <?php if ( $cart_exclude ) checked( $cart_exclude, 'yes' ) ?> /> <?php _e( 'Order rules: Exclude', 'min-max-quantities-for-woocommerce' ); ?> <a class="tips" data-tip="<?php _e( 'Exclude this product from minimum order quantity/value rules. If this is the only item in the cart, rules will not apply.', 'min-max-quantities-for-woocommerce' ); ?>" href="#">[?]</a></label>
 
-                    <label><input type="checkbox" class="checkbox" name="variation_minmax_category_group_of_exclude[<?php echo $loop; ?>]" <?php if ($category_group_of_exclude) checked($category_group_of_exclude, 'yes') ?> /> <?php _e('Category group-of rules: Exclude', 'min-max-quantities-for-woocommerce'); ?> <a class="tips" data-tip="<?php _e('Exclude this product from category group-of-quantity rules. This product will not be counted towards category groups.', 'min-max-quantities-for-woocommerce'); ?>" href="#">[?]</a></label>
+					<label><input type="checkbox" class="checkbox" name="variation_minmax_category_group_of_exclude[<?php echo $loop; ?>]" <?php if ( $category_group_of_exclude ) checked( $category_group_of_exclude, 'yes' ) ?> /> <?php _e( 'Category group-of rules: Exclude', 'min-max-quantities-for-woocommerce' ); ?> <a class="tips" data-tip="<?php _e( 'Exclude this product from category group-of-quantity rules. This product will not be counted towards category groups.', 'min-max-quantities-for-woocommerce' ); ?>" href="#">[?]</a></label>
                 </p>
             </div>
         <?php } else { ?>
             <tr class="min_max_rules_options" <?php echo $visible; ?>>
                 <td>
-                    <label><?php _e('Minimum quantity', 'min-max-quantities-for-woocommerce'); ?></label>
+					<label><?php _e( 'Minimum quantity', 'min-max-quantities-for-woocommerce' ); ?></label>
                     <input type="number" size="5" name="variation_minimum_allowed_quantity[<?php echo $loop; ?>]" value="<?php if (isset($variation_data['minimum_allowed_quantity'][0])) echo $variation_data['minimum_allowed_quantity'][0]; ?>" />
                 </td>
                 <td>
-                    <label><?php _e('Maximum quantity', 'min-max-quantities-for-woocommerce'); ?> <input type="text" size="5" name="variation_maximum_allowed_quantity[<?php echo $loop; ?>]" value="<?php if (isset($variation_data['maximum_allowed_quantity'][0])) echo $variation_data['maximum_allowed_quantity'][0]; ?>" />
+					<label><?php _e( 'Maximum quantity', 'min-max-quantities-for-woocommerce' ); ?> <input type="text" size="5" name="variation_maximum_allowed_quantity[<?php echo $loop; ?>]" value="<?php if ( isset( $variation_data['maximum_allowed_quantity'][0] ) ) echo $variation_data['maximum_allowed_quantity'][0]; ?>" />
                 </td>
             </tr>
             <tr class="min_max_rules_options" <?php echo $visible; ?>>
                 <td>
-                    <label><?php _e('Group of...', 'min-max-quantities-for-woocommerce'); ?></label>
+					<label><?php _e( 'Group of...', 'min-max-quantities-for-woocommerce' ); ?></label>
                     <input type="number" size="5" name="variation_group_of_quantity[<?php echo $loop; ?>]" value="<?php if (isset($variation_data['group_of_quantity'][0])) echo $variation_data['group_of_quantity'][0]; ?>" />
                 </td>
                 <td>
 
-                    <label><input type="checkbox" class="checkbox" name="variation_minmax_do_not_count[<?php echo $loop; ?>]" <?php if (isset($variation_data['minmax_do_not_count'][0])) checked($variation_data['minmax_do_not_count'][0], 'yes') ?> /> <?php _e('Order rules: Do not count', 'min-max-quantities-for-woocommerce'); ?> <a class="tips" data-tip="<?php _e('Don\'t count this product against your minimum order quantity/value rules.', 'min-max-quantities-for-woocommerce'); ?>" href="#">[?]</a></label>
+					<label><input type="checkbox" class="checkbox" name="variation_minmax_do_not_count[<?php echo $loop; ?>]" <?php if ( isset( $variation_data['minmax_do_not_count'][0] ) ) checked( $variation_data['minmax_do_not_count'][0], 'yes' ) ?> /> <?php _e( 'Order rules: Do not count', 'min-max-quantities-for-woocommerce' ); ?> <a class="tips" data-tip="<?php _e( 'Don\'t count this product against your minimum order quantity/value rules.', 'min-max-quantities-for-woocommerce' ); ?>" href="#">[?]</a></label>
 
-                    <label><input type="checkbox" class="checkbox" name="variation_minmax_cart_exclude[<?php echo $loop; ?>]" <?php if (isset($variation_data['minmax_cart_exclude'][0])) checked($variation_data['minmax_cart_exclude'][0], 'yes') ?> /> <?php _e('Order rules: Exclude', 'min-max-quantities-for-woocommerce'); ?> <a class="tips" data-tip="<?php _e('Exclude this product from minimum order quantity/value rules. If this is the only item in the cart, rules will not apply.', 'min-max-quantities-for-woocommerce'); ?>" href="#">[?]</a></label>
+					<label><input type="checkbox" class="checkbox" name="variation_minmax_cart_exclude[<?php echo $loop; ?>]" <?php if ( isset( $variation_data['minmax_cart_exclude'][0] ) ) checked( $variation_data['minmax_cart_exclude'][0], 'yes' ) ?> /> <?php _e( 'Order rules: Exclude', 'min-max-quantities-for-woocommerce' ); ?> <a class="tips" data-tip="<?php _e( 'Exclude this product from minimum order quantity/value rules. If this is the only item in the cart, rules will not apply.', 'min-max-quantities-for-woocommerce' ); ?>" href="#">[?]</a></label>
 
-                    <label><input type="checkbox" class="checkbox" name="variation_minmax_category_group_of_exclude[<?php echo $loop; ?>]" <?php if (isset($variation_data['minmax_category_group_of_exclude'][0])) checked($variation_data['minmax_category_group_of_exclude'][0], 'yes') ?> /> <?php _e('Category group-of rules: Exclude', 'min-max-quantities-for-woocommerce'); ?> <a class="tips" data-tip="<?php _e('Exclude this product from category group-of-quantity rules. This product will not be counted towards category groups.', 'min-max-quantities-for-woocommerce'); ?>" href="#">[?]</a></label>
+					<label><input type="checkbox" class="checkbox" name="variation_minmax_category_group_of_exclude[<?php echo $loop; ?>]" <?php if ( isset( $variation_data['minmax_category_group_of_exclude'][0] ) ) checked( $variation_data['minmax_category_group_of_exclude'][0], 'yes' ) ?> /> <?php _e( 'Category group-of rules: Exclude', 'min-max-quantities-for-woocommerce' ); ?> <a class="tips" data-tip="<?php _e( 'Exclude this product from category group-of-quantity rules. This product will not be counted towards category groups.', 'min-max-quantities-for-woocommerce' ); ?>" href="#">[?]</a></label>
 
                 </td>
             </tr>
@@ -425,9 +444,9 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
         global $woocommerce;
         ?>
         <div class="form-field">
-            <label><?php _e('Group of...', 'min-max-quantities-for-woocommerce'); ?></label>
+			<label><?php _e( 'Group of...', 'min-max-quantities-for-woocommerce' ); ?></label>
             <input type="number" size="5" name="group_of_quantity" />
-            <p class="description"><?php _e('Enter a quantity to only allow products in this category to be purchased in groups of X', 'min-max-quantities-for-woocommerce'); ?></p>
+			<p class="description"><?php _e( 'Enter a quantity to only allow products in this category to be purchased in groups of X', 'min-max-quantities-for-woocommerce' ); ?></p>
         </div>
         <?php
     }
@@ -446,10 +465,10 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
         $display_type = get_woocommerce_term_meta($term->term_id, 'group_of_quantity', true);
         ?>
         <tr class="form-field">
-            <th scope="row" valign="top"><label><?php _e('Group of...', 'min-max-quantities-for-woocommerce'); ?></label></th>
+			<th scope="row" valign="top"><label><?php _e( 'Group of...', 'min-max-quantities-for-woocommerce' ); ?></label></th>
             <td>
                 <input type="number" size="5" name="group_of_quantity" value="<?php echo $display_type; ?>" />
-                <p class="description"><?php _e('Enter a quantity to only allow products in this category to be purchased in groups of X', 'min-max-quantities-for-woocommerce'); ?></p>
+				<p class="description"><?php _e( 'Enter a quantity to only allow products in this category to be purchased in groups of X', 'min-max-quantities-for-woocommerce' ); ?></p>
             </td>
         </tr>
         <?php
@@ -467,6 +486,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
     function category_fields_save($term_id, $tt_id, $taxonomy) {
         if (isset($_POST['group_of_quantity'])) {
             update_woocommerce_term_meta($term_id, 'group_of_quantity', esc_attr($_POST['group_of_quantity']));
+
         }
     }
 
@@ -478,7 +498,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
      * @return void
      */
     function product_cat_columns($columns) {
-        $columns['groupof'] = __('Purchasable in...', 'min-max-quantities-for-woocommerce');
+		$columns['groupof'] = __( 'Purchasable in...', 'min-max-quantities-for-woocommerce' );
 
         return $columns;
     }
@@ -497,9 +517,11 @@ class MBJ_Min_Max_Quantities_For_WooCommerce_Admin {
 
         if ($column == 'groupof') {
             if ($groupof = get_woocommerce_term_meta($id, 'group_of_quantity', true)) {
-                $columns .= __('Groups of', 'min-max-quantities-for-woocommerce') . ' ' . absint($groupof);
+				$columns .= __( 'Groups of', 'min-max-quantities-for-woocommerce' ) . ' ' . absint( $groupof );
+
             } else {
                 $columns .= '&ndash;';
+
             }
         }
 
