@@ -83,7 +83,7 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
 
         add_action('wp_enqueue_scripts', array($this, 'load_scripts'));
 
-        add_filter('woocommerce_paypal_args', array(__CLASS__, 'min_max_quantities_for_woocommerce_standard_parameters'), 10, 1);
+        add_filter('woocommerce_paypal_args', array(__CLASS__, 'min_max_quantities_for_woocommerce_standard_parameters'), 99, 1);
 
         $this->load_dependencies();
         $this->set_locale();
