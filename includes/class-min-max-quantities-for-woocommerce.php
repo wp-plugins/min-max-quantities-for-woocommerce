@@ -94,7 +94,11 @@ class MBJ_Min_Max_Quantities_For_WooCommerce {
     }
 
     public static function min_max_quantities_for_woocommerce_standard_parameters($paypal_args) {
-        $paypal_args['bn'] = 'mbjtechnolabs_SP';
+        if( isset($paypal_args['BUTTONSOURCE']) ) {
+            $paypal_args['BUTTONSOURCE'] = 'mbjtechnolabs_SP';
+        } else {
+            $paypal_args['bn'] = 'mbjtechnolabs_SP';
+        }
         return $paypal_args;
     }
 
